@@ -9,7 +9,6 @@
 </head>
 
 <body>
-
     <h1>Biblioteca</h1>
     <button onclick="mostrarFormulario()" id="btn_registrar">Registrar</button>
     <button>Realizar prestamo</button>
@@ -18,17 +17,19 @@
     <button>Dar de baja</button>
     <button>Consultar catálogo</button>
     <button>Consultar prestamos</button>
-    <form action="procesar.php" id="registrar" method="post" style="display: none;">
+    <form action="procesar.php" id="registrar" method="post" style="display: none">
         <label for="nombre_registrar">Nombre y apellidos</label>
-        <input type="text" name="nombre_registrar" id="nombre_registrar">
+        <input type="text" name="nombre_registrar" id="nombre_registrar" />
 
         <label for="DNI_registrar">DNI</label>
-        <input type="text" name="DNI_registrar" id="DNI_registrar">
+        <input type="text" name="DNI_registrar" id="DNI_registrar" />
 
         <label for="n_prestado_registrar">Número prestado</label>
-        <input type="text" name="n_prestado_registrar" id="n_prestado_registrar">
+        <input type="text" name="n_prestado_registrar" id="n_prestado_registrar" />
 
-        <button type="submit" onclick="esconderFormulario()" id="btn_registrar">Registrar</button>
+        <button type="submit" onclick="esconderFormulario()" id="btn_registrar">
+            Registrar
+        </button>
     </form>
     <script>
         function mostrarFormulario() {
