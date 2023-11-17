@@ -10,7 +10,7 @@ $libros = "CREATE TABLE IF NOT EXISTS libros (
    sinopsis VARCHAR(500) NOT NULL,
    n_disponibles INT NOT NULL,
    n_totales INT NOT NULL,
-                )";
+)";
 
 // Creamos tabla lectores con sus respectivos campos
 $lectores = "CREATE TABLE IF NOT EXISTS lectores (
@@ -26,6 +26,5 @@ $prestamo = "CREATE TABLE IF NOT EXISTS prestamo (
     id_lector INT,
     id_libro INT,
 )";
-
 
 mysqli_close($conexion);
