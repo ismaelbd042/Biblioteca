@@ -17,7 +17,7 @@ $lectores = "CREATE TABLE IF NOT EXISTS lectores (
     id INT AUTO_INCREMENT PRIMARY KEY,
     lector VARCHAR(100) NOT NULL,
     DNI VARCHAR(9) NOT NULL,
-    estado ENUM('alta', 'baja') DEFAULT 'alta',
+   estado ENUM('alta', 'baja') DEFAULT 'alta',
     n_prestado INT NOT NULL
 )";
 
