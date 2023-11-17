@@ -5,6 +5,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="script.js"></script>
     <title>Biblioteca</title>
 </head>
 
@@ -17,7 +18,10 @@
     <button>Dar de baja</button>
     <button>Consultar catálogo</button>
     <button>Consultar prestamos</button>
-    <form action="procesar.php" id="registrar" method="post" style="display: none">
+    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" id="registrar" method="post" style="display: none">
+        <?php
+        include "procesar.php";
+        ?>
         <label for="nombre_registrar">Nombre y apellidos</label>
         <input type="text" name="nombre_registrar" id="nombre_registrar" />
 
@@ -27,20 +31,11 @@
         <label for="n_prestado_registrar">Número prestado</label>
         <input type="text" name="n_prestado_registrar" id="n_prestado_registrar" />
 
-        <button type="submit" onclick="esconderFormulario()" id="btn_registrar">
+        <input type="hidden" id="action" name="accion" value="registrar_lector">
+        <button type="submit" onclick="esconderFormulario(); registrar_lector()" id="btn_registrar">
             Registrar
         </button>
     </form>
-    <script>
-        function mostrarFormulario() {
-            var formulario = document.getElementById("registrar");
-            formulario.style.display = "block"; // Muestra el formulario
-        }
-        function esconderFormulario() {
-            var formulario = document.getElementById("registrar");
-            formulario.style.display = "none"; // Muestra el formulario
-        }
-    </script>
 </body>
 
 </html>
