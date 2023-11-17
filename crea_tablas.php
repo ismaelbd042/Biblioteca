@@ -26,5 +26,11 @@ $prestamo = "CREATE TABLE IF NOT EXISTS prestamo (
     id_lector INT,
     id_libro INT,
 )";
+mysqli_query($conexion, $libros) or die("Error al crear la tabla libros: ");
+mysqli_query($conexion, $lectores) or die("Error al crear la tabla lectores: ");
+mysqli_query($conexion, $prestamo) or die("Error al crear la tabla prestamo: ");
 
+
+$insertar_incidencia = "INSERT INTO libros (nombre, tipo_usuario, fecha, tipo_incidencia, descripcion, imagen_path)
+                            VALUES ('$nombre', '$tipo_usuario', '$fecha', '$tipo_incidencia', '$descripcion', '$ruta_imagen')";
 mysqli_close($conexion);
