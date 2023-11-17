@@ -1,6 +1,5 @@
 <?php
 require_once "conecta.php";
-require_once "crea_tablas.php";
 
 function registrar_lector()
 {
