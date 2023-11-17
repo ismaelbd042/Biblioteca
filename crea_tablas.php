@@ -26,11 +26,23 @@ $prestamo = "CREATE TABLE IF NOT EXISTS prestamo (
     id_lector INT,
     id_libro INT,
 )";
+
 mysqli_query($conexion, $libros) or die("Error al crear la tabla libros: ");
 mysqli_query($conexion, $lectores) or die("Error al crear la tabla lectores: ");
 mysqli_query($conexion, $prestamo) or die("Error al crear la tabla prestamo: ");
 
 
-$insertar_incidencia = "INSERT INTO libros (nombre, tipo_usuario, fecha, tipo_incidencia, descripcion, imagen_path)
-                            VALUES ('$nombre', '$tipo_usuario', '$fecha', '$tipo_incidencia', '$descripcion', '$ruta_imagen')";
+$insertar_libros_iniciales = "INSERT INTO libros (nombre, autor, publicacion, ISBN, sinopsis, n_disponibles, n_totales)
+                            VALUES ('El ingenioso hidalgo don Quijote de la Mancha', 'Miguel de Cervantes', '1605', '9788408061052', 
+                            'El ingenioso hidalgo don Quijote de la Mancha narra las aventuras de Alonso Quijano, un hidalgo pobre que de tanto 
+                            leer novelas de caballería acaba enloqueciendo y creyendo ser un caballero andante, nombrándose a sí mismo como don 
+                            Quijote de la Mancha.', '14', '20'), ('Clean Code', 'Robert C. Martin', '2008', '9780132350884', 
+                            'Este libro es un referente para todos los programadores del mundo. Explica conceptos para mejorar la 
+                            escritura del código, muestra casos de uso, contiene múltiples ejemplos de conversión de código y todo desde 
+                            un punto de vista de un programador profesional.', '3', '5')";
+
+
+mysqli_query($conexion, $insertar_libros_iniciales) or die("Error al insertar los primeros libros.");
+
+
 mysqli_close($conexion);
