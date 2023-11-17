@@ -1,19 +1,45 @@
+<!-- Autores: Ismael Bodas y Pablo Naranjo -->
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Biblioteca</title>
-  </head>
+</head>
 
-  <body>
+<body>
+
     <h1>Biblioteca</h1>
-    <button>Registrar</button>
+    <button onclick="mostrarFormulario()" id="btn_registrar">Registrar</button>
     <button>Realizar prestamo</button>
     <button>Devolver prestamo</button>
     <button>Añadir libro</button>
     <button>Dar de baja</button>
     <button>Consultar catálogo</button>
     <button>Consultar prestamos</button>
-  </body>
+    <form action="procesar.php" id="registrar" method="post" style="display: none;">
+        <label for="nombre_registrar">Nombre y apellidos</label>
+        <input type="text" name="nombre_registrar" id="nombre_registrar">
+
+        <label for="DNI_registrar">DNI</label>
+        <input type="text" name="DNI_registrar" id="DNI_registrar">
+
+        <label for="n_prestado_registrar">Número prestado</label>
+        <input type="text" name="n_prestado_registrar" id="n_prestado_registrar">
+
+        <button type="submit" onclick="esconderFormulario()" id="btn_registrar">Registrar</button>
+    </form>
+    <script>
+        function mostrarFormulario() {
+            var formulario = document.getElementById("registrar");
+            formulario.style.display = "block"; // Muestra el formulario
+        }
+        function esconderFormulario() {
+            var formulario = document.getElementById("registrar");
+            formulario.style.display = "none"; // Muestra el formulario
+        }
+    </script>
+</body>
+
 </html>
