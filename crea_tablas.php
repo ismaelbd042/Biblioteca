@@ -31,6 +31,14 @@ mysqli_query($conexion, $lectores) or die("Error al crear la tabla lectores: ");
 mysqli_query($conexion, $prestamo) or die("Error al crear la tabla prestamo: ");
 
 
-$insertar_incidencia = "INSERT INTO libros (nombre, tipo_usuario, fecha, tipo_incidencia, descripcion, imagen_path)
-                            VALUES ('$nombre', '$tipo_usuario', '$fecha', '$tipo_incidencia', '$descripcion', '$ruta_imagen')";
+$insertar_clientes_iniciales = "INSERT INTO lectores (lector, DNI, estado, n_prestamo)
+                                 VALUES ('Pablo', '54242131N', 'alta', '2'),
+                                 VALUES ('Imael', '02571143L', 'alta', '1')";
+$insertar_prestamo_inicial = "INSERT INTO prestamo (id_lector, id_libro)
+                                 VALUES ('1', '2'),
+                                 VALUES ('2', '1')";
+
+mysqli_query($conexion, $insertar_clientes_iniciales) or die("Error al insertar los clientes iniciales");
+mysqli_query($conexion, $insertar_prestamo_inicial) or die("Error al insertar los prestamos iniciales");
+
 mysqli_close($conexion);
