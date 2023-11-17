@@ -26,4 +26,6 @@ $prestamo = "CREATE TABLE IF NOT EXISTS prestamo (
     id_lector INT,
     id_libro INT,
 )";
-$conn->query($sql_lectores);
+
+
+mysqli_close($conexion);
