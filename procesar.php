@@ -24,7 +24,7 @@ function registrar_lector($conexion)
 
     $sql = "INSERT INTO lectores (nombre, DNI, n_prestado) VALUES ('$nombre', '$DNI', '$n_prestado')";
     // Ejecutar la consulta
-    mysqli_query($conexion, $sql) or die("Error al insertar datos");
+    // mysqli_query($conexion, $sql) or die("Error al insertar datos");
     // Cerrar la conexión
     $conexion->close();
     // header("Location: index.html");
