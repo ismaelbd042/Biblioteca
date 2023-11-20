@@ -49,7 +49,7 @@ $insertar_libros_iniciales = "INSERT INTO libros (nombre, autor, publicacion, IS
                             escritura del código, muestra casos de uso, contiene múltiples ejemplos de conversión de código y todo desde 
                             un punto de vista de un programador profesional.', '3', '5')";
 
-
+//hacer un if que si no hay nada en las tablas añada los datos y si ya tiene datos, no hace nada
 mysqli_query($conexion, $insertar_libros_iniciales) or die("Error al insertar los primeros libros.");
 mysqli_query($conexion, $insertar_clientes_iniciales) or die("Error al insertar los clientes iniciales");
 mysqli_query($conexion, $insertar_prestamo_inicial) or die("Error al insertar los prestamos iniciales");
