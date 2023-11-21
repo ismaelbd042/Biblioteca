@@ -8,13 +8,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       // Según la acción, ejecutar la función correspondiente
       switch ($accion) {
          case 'registrar_lector':
-            registrar_lector($conexion); // Pasar $conexion como argumento
+            registrarLector($conexion); // Pasar $conexion como argumento
             break;
          case 'realizar_prestamo':
-            realizar_prestamo($conexion); // Pasar $conexion como argumento
+            realizarPrestamo($conexion); // Pasar $conexion como argumento
             break;
          case 'añadirLibro':
             añadirLibro($conexion);
+            break;
+         case 'realizar_prestamo':
+            devolverPrestamo($conexion); // Pasar $conexion como argumento
             break;
          default:
             break;
@@ -22,20 +25,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
    }
 }
 
-function registrar_lector($conexion)
+function registrarLector($conexion)
 {
    $lector = $_POST['nombre_registrar'];
    $DNI = $_POST['DNI_registrar'];
-   $n_prestado = $_POST['n_prestado_registrar'];
 
-   $sql = "INSERT INTO lectores (lector, DNI, n_prestado) VALUES ('$lector', '$DNI', '$n_prestado')";
+   $sql = "INSERT INTO lectores (lector, DNI) VALUES ('$lector', '$DNI')";
    // Ejecutar la consulta
    mysqli_query($conexion, $sql) or die("Error al insertar datos");
    // Cerrar la conexión
-   $conexion->close();
+
 }
 
-function realizar_prestamo($conexion)
+function realizarPrestamo($conexion)
 {
    $nombreLector = $_POST['nombre_lector_prestamo'];
    $nombreLibro = $_POST['nombre_libro_prestamo'];
@@ -55,7 +57,16 @@ function realizar_prestamo($conexion)
    // Realizar la inserción en la tabla prestamo
    $insert = "INSERT INTO prestamo (id_lector, id_libro) VALUES ('$id_lector', '$id_libro')";
    mysqli_query($conexion, $insert) or die("Error al insertar datos");
+
+   $sql3 = "UPDATE lectores SET n_prestado = n_prestado + 1 WHERE id = '$id_lector'";
+   mysqli_query($conexion, $sql3) or die("Error al cambiar datos");
+
+   $sql4 = "UPDATE libros SET n_disponibles = n_disponibles - 1 WHERE id = '$id_libro'";
+   mysqli_query($conexion, $sql4) or die("Error al cambiar datos");
+
+   $conexion->close();
 }
+
 function añadirLibro($conexion)
 {
    $nombre = $_POST['nombre'];
@@ -73,8 +84,13 @@ function consultarCatalogo()
 {
    //Aquí tengo que hacer un select para coger todos los datos y guardarlos en un array
 }
+
 function eliminarLector()
 {
    $nombre = $_POST['nombre'];
    $sql = "DELETE FROM lectores WHERE nombre = '$nombre'";
+}
+
+function devolverPrestamo()
+{
 }
