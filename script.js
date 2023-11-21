@@ -2,7 +2,7 @@
 // Declara una variable global para realizar un seguimiento del estado
 
 document.addEventListener("DOMContentLoaded", function () {
-
+  
 });
 
 //Registrar

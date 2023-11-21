@@ -55,6 +55,7 @@ function realizar_prestamo($conexion)
    // Realizar la inserción en la tabla prestamo
    $insert = "INSERT INTO prestamo (id_lector, id_libro) VALUES ('$id_lector', '$id_libro')";
    mysqli_query($conexion, $insert) or die("Error al insertar datos");
+   $conexion->close();
 }
 function añadirLibro($conexion)
 {

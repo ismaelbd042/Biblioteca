@@ -10,6 +10,7 @@
 </head>
 
 <body>
+
     <h1>Biblioteca</h1>
     <button onclick="mostrarFormularioRegistrar()">Registrar</button>
     <button onclick="mostrarFormularioRealizarPrestamo()">Realizar prestamo</button>
