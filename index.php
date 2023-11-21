@@ -14,9 +14,9 @@
     <button onclick="mostrarFormularioRegistrar()">Registrar</button>
     <button onclick="mostrarFormularioRealizarPrestamo()">Realizar prestamo</button>
     <button onclick="mostrarFormularioDevolverPrestamo()">Devolver prestamo</button>
-    <button onclick="mostrarFormularioAñadirLibro()">Añadir libro</button>
+    <button onclick="mostrarFormularioAñadir()">Añadir libro</button>
     <button onclick="mostrarFormularioDarDeBaja()">Dar de baja</button>
-    <button onclick="mostrarFormularioConsultarCatalogo()">Consultar catálogo</button>
+    <button onclick="mostrarCatalogo()">Consultar catálogo</button>
     <button onclick="mostrarFormularioConsultarPrestamos()">Consultar prestamos</button>
     <br>
     <?php
@@ -45,9 +45,39 @@
         <input type="text" name="nombre_lector_prestamo" id="nombre_lector_prestamo" />
 
         <input type="hidden" id="action" name="accion" value="realizar_prestamo">
-        <button type="submit" onclick="esconderFormularioRealizarPrestamo(); realizar_prestamo();" id="btn_realizar_prestamo">
+        <button type="submit" onclick="realizar_prestamo();" id="btn_realizar_prestamo">
             Realizar Préstamo
         </button>
+    </form>
+    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" id="añadir" style="display: none">
+        <label for="nombre">Nombre: </label>
+        <input type="text" name="nombre" id="nombre">
+        <label for="autor">Autor: </label>
+        <input type="text" name="autor" id="autor">
+        <label for="publicacion">Publicación: </label>
+        <input type="date" name="publicacion" id="publicacion">
+        <label for="isbn">ISBN: </label>
+        <input type="text" name="isbn" id="isbn">
+        <label for="sinopsis">Sinopsis</label>
+        <textarea name="sinopsis" id="sinopsis" cols="30" rows="10"></textarea>
+        <label for="n_disponibles">Número de libros disponibles</label>
+        <input type="number" name="n_disponibles" id="n_disponibles">
+        <label for="n_totales">Número de libros en total</label>
+        <input type="number" name="n_totales" id="n_totales">
+        <input type="hidden" id="action" name="accion" value="añadirLibro">
+        <input type="submit" onclick="esconderFormularioAñadir(); añadirLibro()" id="btn_añadir" value="Añadir">
+    </form>
+    <div style="display: none" id="catalogo">
+        <h2>Catálogo</h2>
+        <?php
+        //Aquí tengo que hacer un foreach para recorrer el array e imprimir cada iteración
+        ?>
+        <button type="submit" onclick="" id="btn_volver">Volver a la página</button>
+    </div>
+    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" id="eliminar" style="display: none">
+        <label for="nombre">Nombre</label>
+        <input type="text" name="nombre" id="nombre">
+        <input type="submit" value="Eliminar">
     </form>
 </body>
 

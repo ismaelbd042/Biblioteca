@@ -1,36 +1,45 @@
 // Ejecutar procesa.php al cargar la página
 // Declara una variable global para realizar un seguimiento del estado
-let yaEjecutado = false;
 
 document.addEventListener("DOMContentLoaded", function () {
-  // Verifica si la variable global yaEjecutado es falsa
-  if (!yaEjecutado) {
-    console.log("Ejecutando el código por primera vez");
 
-    // Realiza la operación solo si no se ha ejecutado antes
-    fetch("crea_tablas.php")
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.text();
-      })
-      .then((data) => {
-        // Manejar la respuesta si es necesario
-        console.log(data);
-      })
-      .catch((error) => {
-        console.error("Error al cargar procesa.php:", error);
-      });
-
-    // Marca que ya se ha ejecutado
-    yaEjecutado = true;
-  }
 });
 
+//Registrar
 function mostrarFormularioRegistrar() {
   var formulario = document.getElementById("registrar");
   formulario.style.display = "block"; // Muestra el formulario
+}
+function esconderFormularioRegistrar() {
+  var formulario = document.getElementById("registrar");
+  formulario.style.display = "none"; // Muestra el formulario
+}
+//Añadir
+function mostrarFormularioAñadir() {
+  var formulario = document.getElementById("añadir");
+  formulario.style.display = "block"; // Muestra el formulario
+}
+function esconderFormularioAñadir() {
+  var formulario = document.getElementById("añadir");
+  formulario.style.display = "none"; // Muestra el formulario
+}
+//catalogo
+function mostrarCatalogo() {
+  var catalogo = document.getElementById("catalogo");
+  catalogo.style.display = "block"; // Muestra el catalogo
+}
+function esconderCatalogo() {
+  var catalogo = document.getElementById("catalogo");
+  catalogo.style.display = "none"; // Muestra el catalogo
+}
+//Eliminar
+function mostrarFormularioEliminar() {
+  var formulario = document.getElementById("eliminar");
+  formulario.style.display = "block"; // Muestra el formulario
+}
+function esconderFormularioEliminar() {
+  var formulario = document.getElementById("eliminar");
+  formulario.style.display = "none"; // Muestra el formulario
 }
 
 function mostrarFormularioRealizarPrestamo() {
@@ -38,32 +47,4 @@ function mostrarFormularioRealizarPrestamo() {
   formulario.style.display = "block"; // Muestra el formulario
 }
 
-function mostrarFormularioDevolverPrestamo() {
-  var formulario = document.getElementById("");
-  formulario.style.display = "block"; // Muestra el formulario
-}
 
-function mostrarFormularioAñadirLibro() {
-  var formulario = document.getElementById("");
-  formulario.style.display = "block"; // Muestra el formulario
-}
-
-function mostrarFormularioDarDeBaja() {
-  var formulario = document.getElementById("");
-  formulario.style.display = "block"; // Muestra el formulario
-}
-
-function mostrarFormularioConsultarCatalogo() {
-  var formulario = document.getElementById("");
-  formulario.style.display = "block"; // Muestra el formulario
-}
-
-function mostrarFormularioConsultarPrestamos() {
-  var formulario = document.getElementById("");
-  formulario.style.display = "block"; // Muestra el formulario
-}
-
-function esconderFormularioRegistrar() {
-  var formulario = document.getElementById("registrar");
-  formulario.style.display = "none"; // Muestra el formulario
-}
