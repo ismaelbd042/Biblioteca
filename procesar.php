@@ -19,6 +19,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
          case 'realizar_prestamo':
             devolverPrestamo($conexion); // Pasar $conexion como argumento
             break;
+         case 'eliminarLector':
+            eliminarLector($conexion);
+            break;
          default:
             break;
       }
@@ -80,15 +83,48 @@ function añadirLibro($conexion)
    mysqli_query($conexion, $sql) or die("Error al insertar los datos");
    $conexion->close();
 }
-function consultarCatalogo()
+function consultarCatalogo($conexion)
 {
    //Aquí tengo que hacer un select para coger todos los datos y guardarlos en un array
+   $sql = "SELECT * FROM libros";
+   $resultado = mysqli_query($conexion, $sql);
+   $row = mysqli_fetch_assoc($resultado);
+   $nombre = $row['nombre'];
+   echo "hola";
 }
 
-function eliminarLector()
+function eliminarLector($conexion)
 {
    $nombre = $_POST['nombre'];
-   $sql = "DELETE FROM lectores WHERE nombre = '$nombre'";
+
+   // Verificar si el lector tiene préstamos
+   $sqlVerificarPrestamos = "SELECT COUNT(*) AS num_prestamos FROM prestamo WHERE id_lector = (SELECT id FROM lectores WHERE lector = '$nombre')";
+   $resultVerificarPrestamos = mysqli_query($conexion, $sqlVerificarPrestamos);
+
+   if ($resultVerificarPrestamos) {
+      $row = mysqli_fetch_assoc($resultVerificarPrestamos);
+      $numPrestamos = $row['num_prestamos'];
+
+      if ($numPrestamos > 0) {
+         // El lector tiene préstamos, no se puede dar de baja
+         echo "El lector tiene libros en préstamo y no se puede dar de baja.";
+      } else {
+         // El lector no tiene préstamos, puedes darlo de baja
+         $sqlDarDeBaja = "DELETE FROM lectores WHERE lector = '$nombre'";
+         $resultDarDeBaja = mysqli_query($conexion, $sqlDarDeBaja);
+
+         if ($resultDarDeBaja) {
+            echo "Lector dado de baja exitosamente.";
+         } else {
+            echo "Error al dar de baja al lector.";
+         }
+      }
+   } else {
+      echo "Error al verificar préstamos del lector.";
+   }
+
+
+   $conexion->close();
 }
 
 function devolverPrestamo()

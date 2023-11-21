@@ -18,7 +18,7 @@
     <button onclick="mostrarFormularioRealizarPrestamo()">Realizar prestamo</button>
     <button onclick="mostrarFormularioDevolverPrestamo()">Devolver prestamo</button>
     <button onclick="mostrarFormularioAñadir()">Añadir libro</button>
-    <button onclick="mostrarFormularioDarDeBaja()">Dar de baja</button>
+    <button onclick="mostrarFormularioEliminar()">Dar de baja</button>
     <button onclick="mostrarCatalogo()">Consultar catálogo</button>
     <button onclick="mostrarFormularioConsultarPrestamos()">Consultar prestamos</button>
     <br>
@@ -84,12 +84,13 @@
         <?php
         //Aquí tengo que hacer un foreach para recorrer el array e imprimir cada iteración
         ?>
-        <button type="submit" onclick="" id="btn_volver">Volver a la página</button>
+        <button type="submit" onclick="esconderCatalogo()" id="btn_volver">Volver a la página</button>
     </div>
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" id="eliminar" style="display: none">
         <label for="nombre">Nombre</label>
         <input type="text" name="nombre" id="nombre">
-        <input type="submit" value="Eliminar">
+        <input type="hidden" id="action" name="accion" value="eliminarLector">
+        <input type="submit" onclick="esconderFormularioEliminar(); eliminarLector()" value="Eliminar">
     </form>
 </body>
 
