@@ -34,7 +34,8 @@ mysqli_query($conexion, $prestamo) or die("Error al crear la tabla prestamo");
 
 $insertar_clientes_iniciales = "INSERT INTO lectores (lector, DNI, estado, n_prestado)
                                  VALUES ('Pablo', '54242131N', 'alta', '2'),
-                                 ('Ismael', '02571143L', 'alta', '1')";
+                                 ('Ismael', '02571143L', 'alta', '1'), 
+                                 ('Lucca', '0', 'baja', '0')";
 
 $insertar_prestamo_inicial = "INSERT INTO prestamo (id_lector, id_libro)
                                  VALUES ('1', '2'),
