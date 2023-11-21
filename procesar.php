@@ -1,5 +1,5 @@
 <?php
-require_once "conecta.php";
+require "conecta.php";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
    if (isset($_POST['accion'])) {

@@ -10,6 +10,9 @@
 </head>
 
 <body>
+    <?php
+    require_once "crea_tablas.php";
+    ?>
     <h1>Biblioteca</h1>
     <button onclick="mostrarFormularioRegistrar()">Registrar</button>
     <button onclick="mostrarFormularioRealizarPrestamo()">Realizar prestamo</button>
@@ -20,7 +23,7 @@
     <button onclick="mostrarFormularioConsultarPrestamos()">Consultar prestamos</button>
     <br>
     <?php
-    include "procesar.php";
+    require "procesar.php";
     ?>
     <form action=" <?php echo $_SERVER['PHP_SELF']; ?>" id="registrar" method="post" style="display: none">
         <label for="nombre_registrar">Nombre y apellidos</label>
