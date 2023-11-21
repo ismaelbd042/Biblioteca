@@ -27,6 +27,4 @@ function registrar_lector($conexion)
    mysqli_query($conexion, $sql) or die("Error al insertar datos");
    // Cerrar la conexión
    $conexion->close();
-   // header("Location: index.html");
-   // exit();
 }
