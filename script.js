@@ -1,7 +1,9 @@
 // Ejecutar procesa.php al cargar la página
 // Declara una variable global para realizar un seguimiento del estado
 
-document.addEventListener("DOMContentLoaded", function () {});
+document.addEventListener("DOMContentLoaded", function () {
+
+});
 
 //Registrar
 function mostrarFormularioRegistrar() {
