@@ -76,4 +76,5 @@ function consultarCatalogo()
 function eliminarLector()
 {
    $nombre = $_POST['nombre'];
+   $sql = "DELETE FROM lectores WHERE nombre = '$nombre'";
 }
