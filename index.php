@@ -12,12 +12,13 @@
 <body>
     <h1>Biblioteca</h1>
     <button onclick="mostrarFormularioRegistrar()">Registrar</button>
-    <button onclick="ver_libros_y_lectores($conexion);mostrarFormularioRealizarPrestamo()">Realizar prestamo</button>
+    <button onclick="mostrarFormularioRealizarPrestamo()">Realizar prestamo</button>
     <button onclick="mostrarFormularioDevolverPrestamo()">Devolver prestamo</button>
     <button onclick="mostrarFormularioAñadirLibro()">Añadir libro</button>
     <button onclick="mostrarFormularioDarDeBaja()">Dar de baja</button>
     <button onclick="mostrarFormularioConsultarCatalogo()">Consultar catálogo</button>
     <button onclick="mostrarFormularioConsultarPrestamos()">Consultar prestamos</button>
+    <br>
     <?php
     include "procesar.php";
     ?>
@@ -37,11 +38,11 @@
         </button>
     </form>
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" id="realizar_prestamo" method="post" style="display: none">
-        <label for="id_libro">ID del libro</label>
-        <input type="text" name="id_libro" id="id_libro" />
+        <label for="nombre_libro_prestamo">Nombre del libro</label>
+        <input type="text" name="nombre_libro_prestamo" id="nombre_libro_prestamo" />
 
-        <label for="id_lector">ID del lector</label>
-        <input type="text" name="id_lector" id="id_lector" />
+        <label for="nombre_lector">Nombre del lector</label>
+        <input type="text" name="nombre_lector_prestamo" id="nombre_lector_prestamo" />
 
         <input type="hidden" id="action" name="accion" value="realizar_prestamo">
         <button type="submit" onclick="esconderFormularioRealizarPrestamo(); realizar_prestamo();" id="btn_realizar_prestamo">
