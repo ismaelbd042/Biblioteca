@@ -41,11 +41,11 @@
         <label for="nombre_libro_prestamo">Nombre del libro</label>
         <input type="text" name="nombre_libro_prestamo" id="nombre_libro_prestamo" />
 
-        <label for="nombre_lector">Nombre del lector</label>
+        <label for="nombre_lector_prestamo">Nombre del lector</label>
         <input type="text" name="nombre_lector_prestamo" id="nombre_lector_prestamo" />
 
         <input type="hidden" id="action" name="accion" value="realizar_prestamo">
-        <button type="submit" onclick="esconderFormularioRealizarPrestamo(); realizar_prestamo();" id="btn_realizar_prestamo">
+        <button type="submit" onclick="realizar_prestamo();" id="btn_realizar_prestamo">
             Realizar Préstamo
         </button>
     </form>
