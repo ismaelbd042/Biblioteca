@@ -11,17 +11,17 @@
 
 <body>
     <h1>Biblioteca</h1>
-    <button onclick="mostrarFormulario()" id="btn_registrar">Registrar</button>
-    <button>Realizar prestamo</button>
-    <button>Devolver prestamo</button>
-    <button>Añadir libro</button>
-    <button>Dar de baja</button>
-    <button>Consultar catálogo</button>
-    <button>Consultar prestamos</button>
-    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" id="registrar" method="post" style="display: none">
-        <?php
-        include "procesar.php";
-        ?>
+    <button onclick="mostrarFormularioRegistrar()">Registrar</button>
+    <button onclick="ver_libros_y_lectores($conexion);mostrarFormularioRealizarPrestamo()">Realizar prestamo</button>
+    <button onclick="mostrarFormularioDevolverPrestamo()">Devolver prestamo</button>
+    <button onclick="mostrarFormularioAñadirLibro()">Añadir libro</button>
+    <button onclick="mostrarFormularioDarDeBaja()">Dar de baja</button>
+    <button onclick="mostrarFormularioConsultarCatalogo()">Consultar catálogo</button>
+    <button onclick="mostrarFormularioConsultarPrestamos()">Consultar prestamos</button>
+    <?php
+    include "procesar.php";
+    ?>
+    <form action=" <?php echo $_SERVER['PHP_SELF']; ?>" id="registrar" method="post" style="display: none">
         <label for="nombre_registrar">Nombre y apellidos</label>
         <input type="text" name="nombre_registrar" id="nombre_registrar" />
 
@@ -32,8 +32,20 @@
         <input type="text" name="n_prestado_registrar" id="n_prestado_registrar" />
 
         <input type="hidden" id="action" name="accion" value="registrar_lector">
-        <button type="submit" onclick="esconderFormulario(); registrar_lector()" id="btn_registrar">
+        <button type="submit" onclick="esconderFormularioRegistrar(); registrar_lector()" id="btn_registrar">
             Registrar
+        </button>
+    </form>
+    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" id="realizar_prestamo" method="post" style="display: none">
+        <label for="id_libro">ID del libro</label>
+        <input type="text" name="id_libro" id="id_libro" />
+
+        <label for="id_lector">ID del lector</label>
+        <input type="text" name="id_lector" id="id_lector" />
+
+        <input type="hidden" id="action" name="accion" value="realizar_prestamo">
+        <button type="submit" onclick="esconderFormularioRealizarPrestamo(); realizar_prestamo();" id="btn_realizar_prestamo">
+            Realizar Préstamo
         </button>
     </form>
 </body>
