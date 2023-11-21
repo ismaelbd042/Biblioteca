@@ -18,7 +18,7 @@ $lectores = "CREATE TABLE IF NOT EXISTS lectores (
     lector VARCHAR(100) NOT NULL,
     DNI VARCHAR(9) NOT NULL,
    estado ENUM('alta', 'baja') DEFAULT 'alta',
-    n_prestado INT NOT NULL
+    n_prestado INT NOT NULL DEFAULT 0
 )";
 
 // Crear tabla prestamo
@@ -41,10 +41,10 @@ $insertar_prestamo_inicial = "INSERT INTO prestamo (id_lector, id_libro)
                                  ('2', '1')";
 
 $insertar_libros_iniciales = "INSERT INTO libros (nombre, autor, publicacion, ISBN, sinopsis, n_disponibles, n_totales)
-                            VALUES ('El ingenioso hidalgo don Quijote de la Mancha', 'Miguel de Cervantes', '1605', '9788408061052', 
+                            VALUES ('El ingenioso hidalgo don Quijote de la Mancha', 'Miguel de Cervantes', '1605-03-12', '9788408061052', 
                             'El ingenioso hidalgo don Quijote de la Mancha narra las aventuras de Alonso Quijano, un hidalgo pobre que de tanto 
                             leer novelas de caballería acaba enloqueciendo y creyendo ser un caballero andante, nombrándose a sí mismo como don 
-                            Quijote de la Mancha.', '14', '20'), ('Clean Code', 'Robert C. Martin', '2008', '9780132350884', 
+                            Quijote de la Mancha.', '14', '20'), ('Clean Code', 'Robert C. Martin', '2008-07-23', '9780132350884', 
                             'Este libro es un referente para todos los programadores del mundo. Explica conceptos para mejorar la 
                             escritura del código, muestra casos de uso, contiene múltiples ejemplos de conversión de código y todo desde 
                             un punto de vista de un programador profesional.', '3', '5')";
