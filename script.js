@@ -1,9 +1,7 @@
 // Ejecutar procesa.php al cargar la página
 // Declara una variable global para realizar un seguimiento del estado
 
-document.addEventListener("DOMContentLoaded", function () {
-
-});
+document.addEventListener("DOMContentLoaded", function () {});
 
 //Registrar
 function mostrarFormularioRegistrar() {
@@ -46,5 +44,3 @@ function mostrarFormularioRealizarPrestamo() {
   var formulario = document.getElementById("realizar_prestamo");
   formulario.style.display = "block"; // Muestra el formulario
 }
-
-
