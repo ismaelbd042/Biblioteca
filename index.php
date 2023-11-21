@@ -10,8 +10,6 @@
 </head>
 
 <body>
-
-
     <?php
     require_once "crea_tablas.php";
     ?>
