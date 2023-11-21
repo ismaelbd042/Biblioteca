@@ -39,8 +39,33 @@ function esconderFormularioEliminar() {
   var formulario = document.getElementById("eliminar");
   formulario.style.display = "none"; // Muestra el formulario
 }
-
+//Realizar prestamo
 function mostrarFormularioRealizarPrestamo() {
   var formulario = document.getElementById("realizar_prestamo");
   formulario.style.display = "block"; // Muestra el formulario
+}
+function esconderFormularioRealizarPrestamo() {
+  var formulario = document.getElementById("realizar_prestamo");
+  formulario.style.display = "none"; // Muestra el formulario
+}
+//Devolver prestamo
+function mostrarFormularioDevolverPrestamo() {
+  var formulario = document.getElementById("devolver_prestamo");
+  formulario.style.display = "block"; // Muestra el formulario
+}
+
+function esconderFormularioDevolverPrestamo() {
+  var formulario = document.getElementById("devolver_prestamo");
+  formulario.style.display = "none"; // Oculta el formulario
+}
+
+//Consultar prestamo
+function mostrarConsultarPrestamos() {
+  var formulario = document.getElementById("consultar_prestamos");
+  formulario.style.display = "block"; // Muestra el formulario
+}
+
+function esconderConsultarPrestamos() {
+  var formulario = document.getElementById("consultar_prestamos");
+  formulario.style.display = "none"; // Oculta el formulario
 }

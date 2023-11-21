@@ -20,7 +20,7 @@
     <button onclick="mostrarFormularioAñadir()">Añadir libro</button>
     <button onclick="mostrarFormularioDarDeBaja()">Dar de baja</button>
     <button onclick="mostrarCatalogo()">Consultar catálogo</button>
-    <button onclick="mostrarFormularioConsultarPrestamos()">Consultar prestamos</button>
+    <button onclick="mostrarConsultarPrestamos()">Consultar prestamos</button>
     <br>
     <?php
     require "procesar.php";
@@ -45,19 +45,19 @@
         <input type="text" name="nombre_lector_prestamo" id="nombre_lector_prestamo" />
 
         <input type="hidden" id="action" name="accion" value="realizar_prestamo">
-        <button type="submit" onclick="realizarPrestamo();" id="btn_realizar_prestamo">
+        <button type="submit" onclick="realizarPrestamo(); esconderFormularioRealizarPrestamo()" id="btn_realizar_prestamo">
             Realizar Préstamo
         </button>
     </form>
-    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" id="realizar_prestamo" method="post" style="display: none">
+    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" id="devolver_prestamo" method="post" style="display: none">
         <label for="nombre_libro_prestamo">Nombre del libro</label>
-        <input type="text" name="nombre_libro_prestamo" id="nombre_libro_prestamo" />
+        <input type="text" name="nombre_libro_devolver" id="nombre_libro_devolver" />
 
         <label for="nombre_lector_prestamo">Nombre del lector</label>
-        <input type="text" name="nombre_lector_prestamo" id="nombre_lector_prestamo" />
+        <input type="text" name="nombre_lector_devolver" id="nombre_lector_devolver" />
 
-        <input type="hidden" id="action" name="accion" value="realizar_prestamo">
-        <button type="submit" onclick="devolverPrestamo();" id="btn_realizar_prestamo">
+        <input type="hidden" id="action" name="accion" value="devolver_prestamo">
+        <button type="submit" onclick="devolverPrestamo();" id="btn_devolver_prestamo">
             Devolver Préstamo
         </button>
     </form>
@@ -91,6 +91,16 @@
         <input type="text" name="nombre" id="nombre">
         <input type="submit" value="Eliminar">
     </form>
+
+    <div style="display: none" id="consultar_prestamos">
+        <h2>Prestamos</h2>
+        <form method="post" id="consultar_prestamos">
+            <label for="nombre">Nombre</label>
+            <input type="text" name="nombre" id="nombre">
+            <input type="submit" onclick="consultarPrestamos()" value="Consultar prestamos">
+        </form>
+        <button type="submit" onclick="esconderConsultarPrestamos()" id="btn_volver">Volver a la página</button>
+    </div>
 </body>
 
 </html>
