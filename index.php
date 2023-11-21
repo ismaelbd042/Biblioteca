@@ -32,11 +32,8 @@
         <label for="DNI_registrar">DNI</label>
         <input type="text" name="DNI_registrar" id="DNI_registrar" />
 
-        <label for="n_prestado_registrar">Número prestado</label>
-        <input type="text" name="n_prestado_registrar" id="n_prestado_registrar" />
-
         <input type="hidden" id="action" name="accion" value="registrar_lector">
-        <button type="submit" onclick="esconderFormularioRegistrar(); registrar_lector()" id="btn_registrar">
+        <button type="submit" onclick="esconderFormularioRegistrar(); registrarLector()" id="btn_registrar">
             Registrar
         </button>
     </form>
@@ -48,8 +45,20 @@
         <input type="text" name="nombre_lector_prestamo" id="nombre_lector_prestamo" />
 
         <input type="hidden" id="action" name="accion" value="realizar_prestamo">
-        <button type="submit" onclick="realizar_prestamo();" id="btn_realizar_prestamo">
+        <button type="submit" onclick="realizarPrestamo();" id="btn_realizar_prestamo">
             Realizar Préstamo
+        </button>
+    </form>
+    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" id="realizar_prestamo" method="post" style="display: none">
+        <label for="nombre_libro_prestamo">Nombre del libro</label>
+        <input type="text" name="nombre_libro_prestamo" id="nombre_libro_prestamo" />
+
+        <label for="nombre_lector_prestamo">Nombre del lector</label>
+        <input type="text" name="nombre_lector_prestamo" id="nombre_lector_prestamo" />
+
+        <input type="hidden" id="action" name="accion" value="realizar_prestamo">
+        <button type="submit" onclick="devolverPrestamo();" id="btn_realizar_prestamo">
+            Devolver Préstamo
         </button>
     </form>
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" id="añadir" style="display: none">
