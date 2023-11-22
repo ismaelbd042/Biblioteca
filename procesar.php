@@ -22,9 +22,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
          case 'consultar_prestamos':
             consultarPrestamos($conexion);
             break;
-         case 'eliminarLector':
-            eliminarLector($conexion);
-            break;
          default:
             break;
       }
@@ -102,48 +99,15 @@ function añadirLibro($conexion)
    mysqli_query($conexion, $sql) or die("Error al insertar los datos");
    $conexion->close();
 }
-function consultarCatalogo($conexion)
+function consultarCatalogo()
 {
    //Aquí tengo que hacer un select para coger todos los datos y guardarlos en un array
-   $sql = "SELECT * FROM libros";
-   $resultado = mysqli_query($conexion, $sql);
-   $row = mysqli_fetch_assoc($resultado);
-   $nombre = $row['nombre'];
-   echo "hola";
 }
 
-function eliminarLector($conexion)
+function eliminarLector()
 {
    $nombre = $_POST['nombre'];
-
-   // Verificar si el lector tiene préstamos
-   $sqlVerificarPrestamos = "SELECT COUNT(*) AS num_prestamos FROM prestamo WHERE id_lector = (SELECT id FROM lectores WHERE lector = '$nombre')";
-   $resultVerificarPrestamos = mysqli_query($conexion, $sqlVerificarPrestamos);
-
-   if ($resultVerificarPrestamos) {
-      $row = mysqli_fetch_assoc($resultVerificarPrestamos);
-      $numPrestamos = $row['num_prestamos'];
-
-      if ($numPrestamos > 0) {
-         // El lector tiene préstamos, no se puede dar de baja
-         echo "El lector tiene libros en préstamo y no se puede dar de baja.";
-      } else {
-         // El lector no tiene préstamos, puedes darlo de baja
-         $sqlDarDeBaja = "DELETE FROM lectores WHERE lector = '$nombre'";
-         $resultDarDeBaja = mysqli_query($conexion, $sqlDarDeBaja);
-
-         if ($resultDarDeBaja) {
-            echo "Lector dado de baja exitosamente.";
-         } else {
-            echo "Error al dar de baja al lector.";
-         }
-      }
-   } else {
-      echo "Error al verificar préstamos del lector.";
-   }
-
-
-   $conexion->close();
+   $sql = "DELETE FROM lectores WHERE nombre = '$nombre'";
 }
 
 function devolverPrestamo($conexion)
@@ -179,26 +143,4 @@ function devolverPrestamo($conexion)
 
 function consultarPrestamos($conexion)
 {
-   $nombreLector = $_POST['nombre'];
-   $sql = "SELECT id_libro FROM prestamo WHERE id_lector = (SELECT id FROM lectores WHERE '$nombreLector' = lector)";
-
-   $id_libros = mysqli_query($conexion, $sql) or die("Error al seleccionar datos");
-   $nombre_libro = [];  // Cambiado a un array para almacenar nombres de libros
-
-   echo "buenas tardes";
-   while ($id_libro = mysqli_fetch_assoc($id_libros)) {
-      // $id_libro es un array asociativo con la clave 'id_libro'
-      $id_libro_actual = $id_libro['id_libro'];
-
-      $sql1 = "SELECT nombre FROM libros WHERE id = '$id_libro_actual'";
-      $resultado1 = mysqli_query($conexion, $sql1) or die("Error al select datos");
-      $fila2 = mysqli_fetch_assoc($resultado1);
-
-      $nombre = $fila2['nombre'];
-      array_push($nombre_libro, $nombre);
-      echo $nombre_libro;
-   }
-
-   // Aquí puedes usar $nombre_libro como desees, por ejemplo, imprimirlo o devolverlo.
-   print_r($nombre_libro);
 }

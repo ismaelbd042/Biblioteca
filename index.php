@@ -37,6 +37,7 @@
             Registrar
         </button>
     </form>
+
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" id="realizar_prestamo" method="post" style="display: none">
         <label for="nombre_libro_prestamo">Nombre del libro</label>
         <input type="text" name="nombre_libro_prestamo" id="nombre_libro_prestamo" />
@@ -49,6 +50,7 @@
             Realizar Préstamo
         </button>
     </form>
+
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" id="devolver_prestamo" method="post" style="display: none">
         <label for="nombre_libro_prestamo">Nombre del libro</label>
         <input type="text" name="nombre_libro_devolver" id="nombre_libro_devolver" />
@@ -61,6 +63,7 @@
             Devolver Préstamo
         </button>
     </form>
+
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" id="añadir" style="display: none">
         <label for="nombre">Nombre: </label>
         <input type="text" name="nombre" id="nombre">
@@ -79,6 +82,7 @@
         <input type="hidden" id="action" name="accion" value="añadirLibro">
         <input type="submit" onclick="esconderFormularioAñadir(); añadirLibro()" id="btn_añadir" value="Añadir">
     </form>
+
     <div style="display: none" id="catalogo">
         <h2>Catálogo</h2>
         <?php
@@ -86,6 +90,7 @@
         ?>
         <button type="submit" onclick="esconderCatalogo()" id="btn_volver">Volver a la página</button>
     </div>
+
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" id="eliminar" style="display: none">
         <label for="nombre">Nombre</label>
         <input type="text" name="nombre" id="nombre">
